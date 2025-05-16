@@ -40,15 +40,15 @@ export function LoginForm() {
     <div className="mx-auto max-w-md mt-8">
       <div className="bg-gray-50 rounded-lg shadow border border-gray-200 overflow-hidden">
         <div className="px-6 py-4 bg-white border-b border-gray-200">
-          <h2 className="text-2xl font-bold text-gray-900">Login</h2>
-          <p className="text-gray-600 mt-1">Enter your credentials to access your account</p>
+          <h2 className="text-2xl font-bold text-gray-900">Iniciar sesión</h2>
+          <p className="text-gray-600 mt-1">Ingresa tus credenciales para acceder a tu cuenta</p>
         </div>
         
         <div className="px-6 py-4 bg-white">
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
               <label htmlFor="username" className="block text-sm font-medium text-gray-700">
-                Username
+                Usuario
               </label>
               <input
                 id="username"
@@ -57,7 +57,7 @@ export function LoginForm() {
                 required
                 value={formData.username}
                 onChange={handleChange}
-                placeholder="your_username"
+                placeholder="tu_usuario"
                 disabled={loading}
                 className="w-full p-2 border border-gray-300 rounded-md"
               />
@@ -65,7 +65,7 @@ export function LoginForm() {
             
             <div className="space-y-2">
               <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                Password
+                Contraseña
               </label>
               <input
                 id="password"
@@ -82,7 +82,7 @@ export function LoginForm() {
 
             {error && (
               <div className="bg-red-50 text-red-500 p-3 rounded-md text-sm border border-red-200">
-                {error}
+                {error === "Invalid credentials" ? "Credenciales inválidas" : error}
               </div>
             )}
 
@@ -91,16 +91,16 @@ export function LoginForm() {
               className="w-full p-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-md"
               disabled={loading}
             >
-              {loading ? 'Logging in...' : 'Login'}
+              {loading ? 'Iniciando sesión...' : 'Iniciar sesión'}
             </button>
           </form>
         </div>
         
         <div className="px-6 py-4 bg-gray-50 border-t border-gray-200">
           <p className="text-sm text-gray-600 text-center">
-            Don't have an account?{' '}
+            ¿No tienes una cuenta?{' '}
             <Link href="/register" className="text-blue-600 hover:text-blue-700 font-medium">
-              Register
+              Registrarse
             </Link>
           </p>
         </div>

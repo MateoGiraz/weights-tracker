@@ -9,8 +9,8 @@ export default function LoginPage() {
       <Header />
       <div className="max-w-4xl mx-auto px-4 py-12">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Welcome to Weights Tracker</h1>
-          <p className="text-gray-600 mt-2">Log in to continue to your account</p>
+          <h1 className="text-3xl font-bold text-gray-900">Bienvenido a Weights Tracker</h1>
+          <p className="text-gray-600 mt-2">Inicia sesión para continuar a tu cuenta</p>
         </div>
         <LoginForm />
       </div>

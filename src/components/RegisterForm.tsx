@@ -35,13 +35,13 @@ export function RegisterForm() {
     
     // Validate password match
     if (formData.password !== formData.confirmPassword) {
-      setValidationError('Passwords do not match');
+      setValidationError('Las contraseñas no coinciden');
       return;
     }
     
     // Validate password length
     if (formData.password.length < 6) {
-      setValidationError('Password must be at least 6 characters');
+      setValidationError('La contraseña debe tener al menos 6 caracteres');
       return;
     }
     
@@ -59,15 +59,15 @@ export function RegisterForm() {
     <div className="mx-auto max-w-md mt-8">
       <div className="bg-gray-50 rounded-lg shadow border border-gray-200 overflow-hidden">
         <div className="px-6 py-4 bg-white border-b border-gray-200">
-          <h2 className="text-2xl font-bold text-gray-900">Create an account</h2>
-          <p className="text-gray-600 mt-1">Enter your details to create a new account</p>
+          <h2 className="text-2xl font-bold text-gray-900">Crear una cuenta</h2>
+          <p className="text-gray-600 mt-1">Ingresa tus datos para crear una nueva cuenta</p>
         </div>
         
         <div className="px-6 py-4 bg-white">
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
               <label htmlFor="username" className="block text-sm font-medium text-gray-700">
-                Username
+                Usuario
               </label>
               <input
                 id="username"
@@ -76,7 +76,7 @@ export function RegisterForm() {
                 required
                 value={formData.username}
                 onChange={handleChange}
-                placeholder="your_username"
+                placeholder="tu_usuario"
                 disabled={loading}
                 className="w-full p-2 border border-gray-300 rounded-md"
               />
@@ -84,7 +84,7 @@ export function RegisterForm() {
             
             <div className="space-y-2">
               <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                Password
+                Contraseña
               </label>
               <input
                 id="password"
@@ -101,7 +101,7 @@ export function RegisterForm() {
             
             <div className="space-y-2">
               <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
-                Confirm Password
+                Confirmar Contraseña
               </label>
               <input
                 id="confirmPassword"
@@ -124,7 +124,7 @@ export function RegisterForm() {
 
             {error && (
               <div className="bg-red-50 text-red-500 p-3 rounded-md text-sm border border-red-200">
-                {error}
+                {error === "Username already exists" ? "El nombre de usuario ya existe" : error}
               </div>
             )}
 
@@ -133,16 +133,16 @@ export function RegisterForm() {
               className="w-full p-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-md"
               disabled={loading}
             >
-              {loading ? 'Creating account...' : 'Register'}
+              {loading ? 'Creando cuenta...' : 'Registrarse'}
             </button>
           </form>
         </div>
         
         <div className="px-6 py-4 bg-gray-50 border-t border-gray-200">
           <p className="text-sm text-gray-600 text-center">
-            Already have an account?{' '}
+            ¿Ya tienes una cuenta?{' '}
             <Link href="/login" className="text-blue-600 hover:text-blue-700 font-medium">
-              Login
+              Iniciar sesión
             </Link>
           </p>
         </div>
