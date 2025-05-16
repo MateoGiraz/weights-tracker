@@ -18,6 +18,7 @@ export function DayRoutine() {
   // State for custom selection
   const [selectedRoutine, setSelectedRoutine] = useState<Routine | null>(null);
   const [selectedDay, setSelectedDay] = useState<Day | null>(null);
+  const [selectedRoutineId, setSelectedRoutineId] = useState<string | undefined>(undefined);
 
   // Calculate today's weekday
   const today = new Date();
@@ -42,6 +43,12 @@ export function DayRoutine() {
       console.error('Error fetching today routine:', err);
     }
   }, [dispatch]);
+
+  // Handle routine selection
+  const handleRoutineSelect = (routine: Routine) => {
+    setSelectedRoutine(routine);
+    setSelectedRoutineId(routine.id);
+  };
 
   // Reset selected day when routine changes
   useEffect(() => {
@@ -77,8 +84,8 @@ export function DayRoutine() {
     return (
       <div className="space-y-4">
         <RoutineSelector 
-          onRoutineSelect={setSelectedRoutine}
-          selectedRoutineId={selectedRoutine?.id}
+          onRoutineSelect={handleRoutineSelect}
+          selectedRoutineId={selectedRoutineId}
         />
         
         <Card className="w-full">
@@ -95,14 +102,21 @@ export function DayRoutine() {
 
   // Check if days array exists and is not empty
   const hasDays = !!displayedRoutine.days && Array.isArray(displayedRoutine.days) && displayedRoutine.days.length > 0;
-  const routineId = displayedRoutine.id || '';
+  const currentRoutineId = displayedRoutine?.id || '';
+  
+  // Set the selected routine ID when displayedRoutine changes
+  useEffect(() => {
+    if (displayedRoutine && displayedRoutine.id) {
+      setSelectedRoutineId(displayedRoutine.id);
+    }
+  }, [displayedRoutine]);
   
   if (!hasDays) {
     return (
       <div className="space-y-4">
         <RoutineSelector 
-          onRoutineSelect={setSelectedRoutine}
-          selectedRoutineId={routineId}
+          onRoutineSelect={handleRoutineSelect}
+          selectedRoutineId={selectedRoutineId}
         />
         
         <Card className="w-full">
@@ -136,8 +150,8 @@ export function DayRoutine() {
   return (
     <div className="space-y-4">
       <RoutineSelector 
-        onRoutineSelect={setSelectedRoutine}
-        selectedRoutineId={routineId}
+        onRoutineSelect={handleRoutineSelect}
+        selectedRoutineId={selectedRoutineId}
       />
       
       {hasDays && (

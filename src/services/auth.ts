@@ -1,5 +1,5 @@
-import api from '../utils/api';
-import tokenStorage from '../utils/tokenStorage';
+import api from '@/lib/api';
+import tokenStorage from '@/lib/tokenStorage';
 
 export interface User {
   id: string;

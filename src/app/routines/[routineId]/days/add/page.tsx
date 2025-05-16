@@ -8,7 +8,7 @@ import api from '@/lib/api';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/Card';
 import { Weekday } from '@/generated/prisma';
 
-export default function AddDayPage({ params }: { params: { routineId: string } }) {
+export default function AddDayPage({ params } : any) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);

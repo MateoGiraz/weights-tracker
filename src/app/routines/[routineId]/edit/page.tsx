@@ -10,7 +10,7 @@ import { ProtectedRoute } from '../../../../components/ProtectedRoute';
 import { Button } from '../../../../components/ui/Button';
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '../../../../components/ui/Card';
 
-export default function EditRoutinePage({ params }: { params: { routineId: string } }) {
+export default function EditRoutinePage({ params } : any) {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const { currentRoutine, loading, error } = useAppSelector((state) => state.routines);

@@ -11,7 +11,7 @@ import { Button } from '../../../components/ui/Button';
 import { ExerciseCard } from '../../../components/ExerciseCard';
 import api from '@/lib/api';
 
-export default function RoutineDetailPage({ params }: { params: { routineId: string } }) {
+export default function RoutineDetailPage({ params } : any) {
   const routineId = params.routineId;
   const dispatch = useAppDispatch();
   const { currentRoutine, loading, error } = useAppSelector((state) => state.routines);
